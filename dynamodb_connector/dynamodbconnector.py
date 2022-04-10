@@ -14,6 +14,7 @@ class DynamoDBConnector(object):
     def __init__(self, logger, **setting):
         self.logger = logger
         self.setting = setting
+        self.dynamodb = self.connect()
 
     def connect(self):
         if (
@@ -32,7 +33,11 @@ class DynamoDBConnector(object):
 
     @property
     def dynamodb(self):
-        return self.connect()
+        return self._dynamodb
+
+    @dynamodb.setter
+    def dynamodb(self, dynamodb):
+        self._dynamodb = dynamodb
 
     def get_count(self, source, updated_at_from, updated_at_to, table_name=None):
         table = self.dynamodb.Table(table_name)
