@@ -10,7 +10,7 @@ setup(
     version="0.0.1",
     author="Idea Bosque",
     author_email="ideabosque@gmail.com",
-    description="ADynamoDB Connector",
+    description="DynamoDB Connector",
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,
