@@ -124,7 +124,7 @@ class DynamoDBConnector(object):
         for duplicated_item in list(
             filter(lambda x: (x["id"] != last_item["id"]), response["Items"])
         ):
-            table.delete_item(Key={"id": duplicated_item["id"]})
+            table.delete_item(Key={"source": source, "id": duplicated_item["id"]})
         return last_item
 
     def put_item(self, entity, table_name=None):
